@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block body_content %}
+
+
+<h3>Create your quiz: </h3>
+
+<div class='form'>
+        <form method='POST' action=''>
+                {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.title.label }}
+            {{ form.title }}
+            {% if form.title.errors %}
+                        <div class="error">
+                                {% for error in form.title.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                        </div>
+                        {% endif %}
+                <div class="form-group">
+                        {{ form.submit }}
+                </div>
+        </form>
+
+</div>
+<div>
+<h3>Your quizzess:</h3>	
+	{% for quiz in quizzes %}
+	<h4>{{ quiz.title }}</h4>
+	<h4>Added on {{ quiz.date }}</h4>
+
+	{% endfor %}
+</div>
+
+{% endblock %}
+
